@@ -13,17 +13,27 @@ export default class Search extends Component {
         this.setState({ searchText: e.target.value });
     }
     
-    handleSumbit = e => {
-        const { match: {params} } = this.props
+    // handleSumbit = e => {
+    //     const { match: {params} } = this.props
 
+    //     e.preventDefault();
+    //     this.props.onSearch(this.state.searchText);
+
+    //     let topicSearched = this.query.value;
+    //     let path =  `${params.topicSearched}`;
+    //     e.currentTarget.reset();
+    //     this.props.replace(path);
+    // }
+
+    handleSumbit = e => {
+        const { match: {params} } = this.state.searchText;
+        let path = `/search/${params}`;
         e.preventDefault();
         this.props.onSearch(this.query.value);
-
-        let topicSearched = this.query.value;
-        let path =  `${params.topicSearched}`;
-        this.props.push(path);
         e.currentTarget.reset();
+        
     }
+
 
     render() {
         return(
